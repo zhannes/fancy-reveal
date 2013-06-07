@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>FancyReveal -- for Foundation 4</title>
+
+  <link rel="stylesheet" href="css/vendor/normalize.css" /> 
+  <link rel="stylesheet" href="css/vendor/foundation.css" />
+  <style>
+    #myModal {display: none; }
+    li { line-height: 2em }
+  </style>
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <h1>Fancy Reveal</h1>
+      <p>Built on Foundation version 4.0.5.</p>
+      <hr/>
+      <ul>
+        <li>Syntactic sugar for controlling Foundation Reveal via deferreds.</li>
+        <li>Methods for showActivity/hideActivity.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 columns">
+      <h4>Usage</h4>
+      <p>Pass an element, you'll get back a reference to a FancyReveal object, .e.g
+      <pre>
+        var $el   = $('#myModal'),
+            modal = App.lib.fancyReveal($el);
+      </pre>      
+      <br/>When you want to open it, call:
+      <pre>
+        modal.open();
+      </pre>
+      </p>
+      <p>To try it, and read about more features, click below.</p>
+      <a href="#" class="small button open-demo">Open Reveal</a>
+    </div>
+  </div>
+
+  <!-- content to be shown as modal -->
+  <div id="myModal" class="reveal-modal large">
+    <h4>Chaining with deferreds</h4>
+    <p>The fancyReveal instance is passed to each function in the chain.<pre>
+    modal
+      .showActivity()
+      .then(resizeForDemo) 
+      .then(function(overlay){
+        overlay.hideActivity();
+      });
+
+    /* Note: 
+       function resizeForDemo(){} 
+       is defined elsewhere. 
+       It returns a deferred */
+    </pre>
+    <button class="resize">Resize</button>
+    </p>    
+
+    <h4>Close it</h4>
+    <p>Event handler on the below button calls<pre>modal.close()</pre></p>
+    <button class="demo-close">Close</button>
+
+    <h4>Or, open modal #2</h4>
+    <button class="second-modal">Modal #2</button>
+
+    <a class="close-reveal-modal">&#215;</a>    
+  </div>
+  <div id="modal2" class="reveal-modal medium">
+    <h2>Modals for days</h2>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/foundation/foundation.js"></script>
+  <script src="js/vendor/foundation/foundation.reveal.js"></script>
+  <script src="js/lib/loader.js"></script>
+  <script src="js/lib/fancy-reveal.js"></script>
+  <script src="js/init.app.js"></script>
+</body>
+</html>
